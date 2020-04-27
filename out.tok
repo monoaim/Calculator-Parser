@@ -1,0 +1,10 @@
+x/VAR =/= 8/NUM ^/^ 2/NUM +/+ 6/NUM /// PI/PI
+4/NUM */* 1/NUM +/+ x/VAR
+-3.218678/NUM ^/^ 5/NUM </< x/VAR
+PI/PI ^/^ 3/NUM -/- 1/NUM ///// 67.18/NUM
+-2.017093/NUM ^/^ (/( 1/NUM +/+ (/( 8/NUM )/) )/) <=/<= (/( 27.97/NUM )/) */* 45.29/NUM ///// 9.26/NUM
+-8/NUM ==/== y/VAR
+-29/NUM ///// 3/NUM /// -25.31263/NUM
+-16.97754/NUM */* -2/NUM */* x/VAR >/> 9.231994/NUM
+-1/NUM /// 7.61287/NUM +/+ 2/NUM */* PI/PI
+-4.871615/NUM ^/^ 3/NUM >=/>= PI/PI */* -18.85/NUM

@@ -1,0 +1,1252 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> VAR = expression
+Rule 2     statement -> expression
+Rule 3     expression -> expression + expression
+Rule 4     expression -> expression - expression
+Rule 5     expression -> expression * expression
+Rule 6     expression -> expression / expression
+Rule 7     expression -> expression Idivide expression
+Rule 8     expression -> expression ^ expression
+Rule 9     expression -> expression > expression
+Rule 10    expression -> expression ge expression
+Rule 11    expression -> expression < expression
+Rule 12    expression -> expression le expression
+Rule 13    expression -> expression eq expression
+Rule 14    expression -> expression ne expression
+Rule 15    expression -> ( expression )
+Rule 16    expression -> NUM
+Rule 17    expression -> PI
+Rule 18    expression -> VAR
+Rule 19    expression -> ERR
+
+Terminals, with rules where they appear
+
+(                    : 15
+)                    : 15
+*                    : 5
++                    : 3
+-                    : 4
+/                    : 6
+<                    : 11
+=                    : 1
+>                    : 9
+ERR                  : 19
+Idivide              : 7
+NUM                  : 16
+PI                   : 17
+VAR                  : 1 18
+^                    : 8
+eq                   : 13
+error                : 
+ge                   : 10
+le                   : 12
+ne                   : 14
+
+Nonterminals, with rules where they appear
+
+expression           : 1 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . VAR = expression
+    (2) statement -> . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    VAR             shift and go to state 2
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    ERR             shift and go to state 7
+
+    statement                      shift and go to state 1
+    expression                     shift and go to state 3
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> VAR . = expression
+    (18) expression -> VAR .
+
+    =               shift and go to state 8
+    +               reduce using rule 18 (expression -> VAR .)
+    -               reduce using rule 18 (expression -> VAR .)
+    *               reduce using rule 18 (expression -> VAR .)
+    /               reduce using rule 18 (expression -> VAR .)
+    Idivide         reduce using rule 18 (expression -> VAR .)
+    ^               reduce using rule 18 (expression -> VAR .)
+    >               reduce using rule 18 (expression -> VAR .)
+    ge              reduce using rule 18 (expression -> VAR .)
+    <               reduce using rule 18 (expression -> VAR .)
+    le              reduce using rule 18 (expression -> VAR .)
+    eq              reduce using rule 18 (expression -> VAR .)
+    ne              reduce using rule 18 (expression -> VAR .)
+    $end            reduce using rule 18 (expression -> VAR .)
+
+
+state 3
+
+    (2) statement -> expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    $end            reduce using rule 2 (statement -> expression .)
+    +               shift and go to state 9
+    -               shift and go to state 10
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+    >               shift and go to state 15
+    ge              shift and go to state 16
+    <               shift and go to state 17
+    le              shift and go to state 18
+    eq              shift and go to state 19
+    ne              shift and go to state 20
+
+
+state 4
+
+    (15) expression -> ( . expression )
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 21
+
+state 5
+
+    (16) expression -> NUM .
+
+    +               reduce using rule 16 (expression -> NUM .)
+    -               reduce using rule 16 (expression -> NUM .)
+    *               reduce using rule 16 (expression -> NUM .)
+    /               reduce using rule 16 (expression -> NUM .)
+    Idivide         reduce using rule 16 (expression -> NUM .)
+    ^               reduce using rule 16 (expression -> NUM .)
+    >               reduce using rule 16 (expression -> NUM .)
+    ge              reduce using rule 16 (expression -> NUM .)
+    <               reduce using rule 16 (expression -> NUM .)
+    le              reduce using rule 16 (expression -> NUM .)
+    eq              reduce using rule 16 (expression -> NUM .)
+    ne              reduce using rule 16 (expression -> NUM .)
+    $end            reduce using rule 16 (expression -> NUM .)
+    )               reduce using rule 16 (expression -> NUM .)
+
+
+state 6
+
+    (17) expression -> PI .
+
+    +               reduce using rule 17 (expression -> PI .)
+    -               reduce using rule 17 (expression -> PI .)
+    *               reduce using rule 17 (expression -> PI .)
+    /               reduce using rule 17 (expression -> PI .)
+    Idivide         reduce using rule 17 (expression -> PI .)
+    ^               reduce using rule 17 (expression -> PI .)
+    >               reduce using rule 17 (expression -> PI .)
+    ge              reduce using rule 17 (expression -> PI .)
+    <               reduce using rule 17 (expression -> PI .)
+    le              reduce using rule 17 (expression -> PI .)
+    eq              reduce using rule 17 (expression -> PI .)
+    ne              reduce using rule 17 (expression -> PI .)
+    $end            reduce using rule 17 (expression -> PI .)
+    )               reduce using rule 17 (expression -> PI .)
+
+
+state 7
+
+    (19) expression -> ERR .
+
+    +               reduce using rule 19 (expression -> ERR .)
+    -               reduce using rule 19 (expression -> ERR .)
+    *               reduce using rule 19 (expression -> ERR .)
+    /               reduce using rule 19 (expression -> ERR .)
+    Idivide         reduce using rule 19 (expression -> ERR .)
+    ^               reduce using rule 19 (expression -> ERR .)
+    >               reduce using rule 19 (expression -> ERR .)
+    ge              reduce using rule 19 (expression -> ERR .)
+    <               reduce using rule 19 (expression -> ERR .)
+    le              reduce using rule 19 (expression -> ERR .)
+    eq              reduce using rule 19 (expression -> ERR .)
+    ne              reduce using rule 19 (expression -> ERR .)
+    $end            reduce using rule 19 (expression -> ERR .)
+    )               reduce using rule 19 (expression -> ERR .)
+
+
+state 8
+
+    (1) statement -> VAR = . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 23
+
+state 9
+
+    (3) expression -> expression + . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 24
+
+state 10
+
+    (4) expression -> expression - . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 25
+
+state 11
+
+    (5) expression -> expression * . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 26
+
+state 12
+
+    (6) expression -> expression / . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 27
+
+state 13
+
+    (7) expression -> expression Idivide . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 28
+
+state 14
+
+    (8) expression -> expression ^ . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 29
+
+state 15
+
+    (9) expression -> expression > . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 30
+
+state 16
+
+    (10) expression -> expression ge . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 31
+
+state 17
+
+    (11) expression -> expression < . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 32
+
+state 18
+
+    (12) expression -> expression le . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 33
+
+state 19
+
+    (13) expression -> expression eq . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 34
+
+state 20
+
+    (14) expression -> expression ne . expression
+    (3) expression -> . expression + expression
+    (4) expression -> . expression - expression
+    (5) expression -> . expression * expression
+    (6) expression -> . expression / expression
+    (7) expression -> . expression Idivide expression
+    (8) expression -> . expression ^ expression
+    (9) expression -> . expression > expression
+    (10) expression -> . expression ge expression
+    (11) expression -> . expression < expression
+    (12) expression -> . expression le expression
+    (13) expression -> . expression eq expression
+    (14) expression -> . expression ne expression
+    (15) expression -> . ( expression )
+    (16) expression -> . NUM
+    (17) expression -> . PI
+    (18) expression -> . VAR
+    (19) expression -> . ERR
+
+    (               shift and go to state 4
+    NUM             shift and go to state 5
+    PI              shift and go to state 6
+    VAR             shift and go to state 22
+    ERR             shift and go to state 7
+
+    expression                     shift and go to state 35
+
+state 21
+
+    (15) expression -> ( expression . )
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    )               shift and go to state 36
+    +               shift and go to state 9
+    -               shift and go to state 10
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+    >               shift and go to state 15
+    ge              shift and go to state 16
+    <               shift and go to state 17
+    le              shift and go to state 18
+    eq              shift and go to state 19
+    ne              shift and go to state 20
+
+
+state 22
+
+    (18) expression -> VAR .
+
+    )               reduce using rule 18 (expression -> VAR .)
+    +               reduce using rule 18 (expression -> VAR .)
+    -               reduce using rule 18 (expression -> VAR .)
+    *               reduce using rule 18 (expression -> VAR .)
+    /               reduce using rule 18 (expression -> VAR .)
+    Idivide         reduce using rule 18 (expression -> VAR .)
+    ^               reduce using rule 18 (expression -> VAR .)
+    >               reduce using rule 18 (expression -> VAR .)
+    ge              reduce using rule 18 (expression -> VAR .)
+    <               reduce using rule 18 (expression -> VAR .)
+    le              reduce using rule 18 (expression -> VAR .)
+    eq              reduce using rule 18 (expression -> VAR .)
+    ne              reduce using rule 18 (expression -> VAR .)
+    $end            reduce using rule 18 (expression -> VAR .)
+
+
+state 23
+
+    (1) statement -> VAR = expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    $end            reduce using rule 1 (statement -> VAR = expression .)
+    +               shift and go to state 9
+    -               shift and go to state 10
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+    >               shift and go to state 15
+    ge              shift and go to state 16
+    <               shift and go to state 17
+    le              shift and go to state 18
+    eq              shift and go to state 19
+    ne              shift and go to state 20
+
+
+state 24
+
+    (3) expression -> expression + expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    +               reduce using rule 3 (expression -> expression + expression .)
+    -               reduce using rule 3 (expression -> expression + expression .)
+    >               reduce using rule 3 (expression -> expression + expression .)
+    ge              reduce using rule 3 (expression -> expression + expression .)
+    <               reduce using rule 3 (expression -> expression + expression .)
+    le              reduce using rule 3 (expression -> expression + expression .)
+    eq              reduce using rule 3 (expression -> expression + expression .)
+    ne              reduce using rule 3 (expression -> expression + expression .)
+    $end            reduce using rule 3 (expression -> expression + expression .)
+    )               reduce using rule 3 (expression -> expression + expression .)
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+
+  ! *               [ reduce using rule 3 (expression -> expression + expression .) ]
+  ! /               [ reduce using rule 3 (expression -> expression + expression .) ]
+  ! Idivide         [ reduce using rule 3 (expression -> expression + expression .) ]
+  ! ^               [ reduce using rule 3 (expression -> expression + expression .) ]
+  ! +               [ shift and go to state 9 ]
+  ! -               [ shift and go to state 10 ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 25
+
+    (4) expression -> expression - expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    +               reduce using rule 4 (expression -> expression - expression .)
+    -               reduce using rule 4 (expression -> expression - expression .)
+    >               reduce using rule 4 (expression -> expression - expression .)
+    ge              reduce using rule 4 (expression -> expression - expression .)
+    <               reduce using rule 4 (expression -> expression - expression .)
+    le              reduce using rule 4 (expression -> expression - expression .)
+    eq              reduce using rule 4 (expression -> expression - expression .)
+    ne              reduce using rule 4 (expression -> expression - expression .)
+    $end            reduce using rule 4 (expression -> expression - expression .)
+    )               reduce using rule 4 (expression -> expression - expression .)
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+
+  ! *               [ reduce using rule 4 (expression -> expression - expression .) ]
+  ! /               [ reduce using rule 4 (expression -> expression - expression .) ]
+  ! Idivide         [ reduce using rule 4 (expression -> expression - expression .) ]
+  ! ^               [ reduce using rule 4 (expression -> expression - expression .) ]
+  ! +               [ shift and go to state 9 ]
+  ! -               [ shift and go to state 10 ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 26
+
+    (5) expression -> expression * expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    +               reduce using rule 5 (expression -> expression * expression .)
+    -               reduce using rule 5 (expression -> expression * expression .)
+    *               reduce using rule 5 (expression -> expression * expression .)
+    /               reduce using rule 5 (expression -> expression * expression .)
+    Idivide         reduce using rule 5 (expression -> expression * expression .)
+    >               reduce using rule 5 (expression -> expression * expression .)
+    ge              reduce using rule 5 (expression -> expression * expression .)
+    <               reduce using rule 5 (expression -> expression * expression .)
+    le              reduce using rule 5 (expression -> expression * expression .)
+    eq              reduce using rule 5 (expression -> expression * expression .)
+    ne              reduce using rule 5 (expression -> expression * expression .)
+    $end            reduce using rule 5 (expression -> expression * expression .)
+    )               reduce using rule 5 (expression -> expression * expression .)
+    ^               shift and go to state 14
+
+  ! ^               [ reduce using rule 5 (expression -> expression * expression .) ]
+  ! +               [ shift and go to state 9 ]
+  ! -               [ shift and go to state 10 ]
+  ! *               [ shift and go to state 11 ]
+  ! /               [ shift and go to state 12 ]
+  ! Idivide         [ shift and go to state 13 ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 27
+
+    (6) expression -> expression / expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    +               reduce using rule 6 (expression -> expression / expression .)
+    -               reduce using rule 6 (expression -> expression / expression .)
+    *               reduce using rule 6 (expression -> expression / expression .)
+    /               reduce using rule 6 (expression -> expression / expression .)
+    Idivide         reduce using rule 6 (expression -> expression / expression .)
+    >               reduce using rule 6 (expression -> expression / expression .)
+    ge              reduce using rule 6 (expression -> expression / expression .)
+    <               reduce using rule 6 (expression -> expression / expression .)
+    le              reduce using rule 6 (expression -> expression / expression .)
+    eq              reduce using rule 6 (expression -> expression / expression .)
+    ne              reduce using rule 6 (expression -> expression / expression .)
+    $end            reduce using rule 6 (expression -> expression / expression .)
+    )               reduce using rule 6 (expression -> expression / expression .)
+    ^               shift and go to state 14
+
+  ! ^               [ reduce using rule 6 (expression -> expression / expression .) ]
+  ! +               [ shift and go to state 9 ]
+  ! -               [ shift and go to state 10 ]
+  ! *               [ shift and go to state 11 ]
+  ! /               [ shift and go to state 12 ]
+  ! Idivide         [ shift and go to state 13 ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 28
+
+    (7) expression -> expression Idivide expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    +               reduce using rule 7 (expression -> expression Idivide expression .)
+    -               reduce using rule 7 (expression -> expression Idivide expression .)
+    *               reduce using rule 7 (expression -> expression Idivide expression .)
+    /               reduce using rule 7 (expression -> expression Idivide expression .)
+    Idivide         reduce using rule 7 (expression -> expression Idivide expression .)
+    >               reduce using rule 7 (expression -> expression Idivide expression .)
+    ge              reduce using rule 7 (expression -> expression Idivide expression .)
+    <               reduce using rule 7 (expression -> expression Idivide expression .)
+    le              reduce using rule 7 (expression -> expression Idivide expression .)
+    eq              reduce using rule 7 (expression -> expression Idivide expression .)
+    ne              reduce using rule 7 (expression -> expression Idivide expression .)
+    $end            reduce using rule 7 (expression -> expression Idivide expression .)
+    )               reduce using rule 7 (expression -> expression Idivide expression .)
+    ^               shift and go to state 14
+
+  ! ^               [ reduce using rule 7 (expression -> expression Idivide expression .) ]
+  ! +               [ shift and go to state 9 ]
+  ! -               [ shift and go to state 10 ]
+  ! *               [ shift and go to state 11 ]
+  ! /               [ shift and go to state 12 ]
+  ! Idivide         [ shift and go to state 13 ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 29
+
+    (8) expression -> expression ^ expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    +               reduce using rule 8 (expression -> expression ^ expression .)
+    -               reduce using rule 8 (expression -> expression ^ expression .)
+    *               reduce using rule 8 (expression -> expression ^ expression .)
+    /               reduce using rule 8 (expression -> expression ^ expression .)
+    Idivide         reduce using rule 8 (expression -> expression ^ expression .)
+    >               reduce using rule 8 (expression -> expression ^ expression .)
+    ge              reduce using rule 8 (expression -> expression ^ expression .)
+    <               reduce using rule 8 (expression -> expression ^ expression .)
+    le              reduce using rule 8 (expression -> expression ^ expression .)
+    eq              reduce using rule 8 (expression -> expression ^ expression .)
+    ne              reduce using rule 8 (expression -> expression ^ expression .)
+    $end            reduce using rule 8 (expression -> expression ^ expression .)
+    )               reduce using rule 8 (expression -> expression ^ expression .)
+    ^               shift and go to state 14
+
+  ! ^               [ reduce using rule 8 (expression -> expression ^ expression .) ]
+  ! +               [ shift and go to state 9 ]
+  ! -               [ shift and go to state 10 ]
+  ! *               [ shift and go to state 11 ]
+  ! /               [ shift and go to state 12 ]
+  ! Idivide         [ shift and go to state 13 ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 30
+
+    (9) expression -> expression > expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    >               reduce using rule 9 (expression -> expression > expression .)
+    ge              reduce using rule 9 (expression -> expression > expression .)
+    <               reduce using rule 9 (expression -> expression > expression .)
+    le              reduce using rule 9 (expression -> expression > expression .)
+    eq              reduce using rule 9 (expression -> expression > expression .)
+    ne              reduce using rule 9 (expression -> expression > expression .)
+    $end            reduce using rule 9 (expression -> expression > expression .)
+    )               reduce using rule 9 (expression -> expression > expression .)
+    +               shift and go to state 9
+    -               shift and go to state 10
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+
+  ! +               [ reduce using rule 9 (expression -> expression > expression .) ]
+  ! -               [ reduce using rule 9 (expression -> expression > expression .) ]
+  ! *               [ reduce using rule 9 (expression -> expression > expression .) ]
+  ! /               [ reduce using rule 9 (expression -> expression > expression .) ]
+  ! Idivide         [ reduce using rule 9 (expression -> expression > expression .) ]
+  ! ^               [ reduce using rule 9 (expression -> expression > expression .) ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 31
+
+    (10) expression -> expression ge expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    >               reduce using rule 10 (expression -> expression ge expression .)
+    ge              reduce using rule 10 (expression -> expression ge expression .)
+    <               reduce using rule 10 (expression -> expression ge expression .)
+    le              reduce using rule 10 (expression -> expression ge expression .)
+    eq              reduce using rule 10 (expression -> expression ge expression .)
+    ne              reduce using rule 10 (expression -> expression ge expression .)
+    $end            reduce using rule 10 (expression -> expression ge expression .)
+    )               reduce using rule 10 (expression -> expression ge expression .)
+    +               shift and go to state 9
+    -               shift and go to state 10
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+
+  ! +               [ reduce using rule 10 (expression -> expression ge expression .) ]
+  ! -               [ reduce using rule 10 (expression -> expression ge expression .) ]
+  ! *               [ reduce using rule 10 (expression -> expression ge expression .) ]
+  ! /               [ reduce using rule 10 (expression -> expression ge expression .) ]
+  ! Idivide         [ reduce using rule 10 (expression -> expression ge expression .) ]
+  ! ^               [ reduce using rule 10 (expression -> expression ge expression .) ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 32
+
+    (11) expression -> expression < expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    >               reduce using rule 11 (expression -> expression < expression .)
+    ge              reduce using rule 11 (expression -> expression < expression .)
+    <               reduce using rule 11 (expression -> expression < expression .)
+    le              reduce using rule 11 (expression -> expression < expression .)
+    eq              reduce using rule 11 (expression -> expression < expression .)
+    ne              reduce using rule 11 (expression -> expression < expression .)
+    $end            reduce using rule 11 (expression -> expression < expression .)
+    )               reduce using rule 11 (expression -> expression < expression .)
+    +               shift and go to state 9
+    -               shift and go to state 10
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+
+  ! +               [ reduce using rule 11 (expression -> expression < expression .) ]
+  ! -               [ reduce using rule 11 (expression -> expression < expression .) ]
+  ! *               [ reduce using rule 11 (expression -> expression < expression .) ]
+  ! /               [ reduce using rule 11 (expression -> expression < expression .) ]
+  ! Idivide         [ reduce using rule 11 (expression -> expression < expression .) ]
+  ! ^               [ reduce using rule 11 (expression -> expression < expression .) ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 33
+
+    (12) expression -> expression le expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    >               reduce using rule 12 (expression -> expression le expression .)
+    ge              reduce using rule 12 (expression -> expression le expression .)
+    <               reduce using rule 12 (expression -> expression le expression .)
+    le              reduce using rule 12 (expression -> expression le expression .)
+    eq              reduce using rule 12 (expression -> expression le expression .)
+    ne              reduce using rule 12 (expression -> expression le expression .)
+    $end            reduce using rule 12 (expression -> expression le expression .)
+    )               reduce using rule 12 (expression -> expression le expression .)
+    +               shift and go to state 9
+    -               shift and go to state 10
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+
+  ! +               [ reduce using rule 12 (expression -> expression le expression .) ]
+  ! -               [ reduce using rule 12 (expression -> expression le expression .) ]
+  ! *               [ reduce using rule 12 (expression -> expression le expression .) ]
+  ! /               [ reduce using rule 12 (expression -> expression le expression .) ]
+  ! Idivide         [ reduce using rule 12 (expression -> expression le expression .) ]
+  ! ^               [ reduce using rule 12 (expression -> expression le expression .) ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 34
+
+    (13) expression -> expression eq expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    >               reduce using rule 13 (expression -> expression eq expression .)
+    ge              reduce using rule 13 (expression -> expression eq expression .)
+    <               reduce using rule 13 (expression -> expression eq expression .)
+    le              reduce using rule 13 (expression -> expression eq expression .)
+    eq              reduce using rule 13 (expression -> expression eq expression .)
+    ne              reduce using rule 13 (expression -> expression eq expression .)
+    $end            reduce using rule 13 (expression -> expression eq expression .)
+    )               reduce using rule 13 (expression -> expression eq expression .)
+    +               shift and go to state 9
+    -               shift and go to state 10
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+
+  ! +               [ reduce using rule 13 (expression -> expression eq expression .) ]
+  ! -               [ reduce using rule 13 (expression -> expression eq expression .) ]
+  ! *               [ reduce using rule 13 (expression -> expression eq expression .) ]
+  ! /               [ reduce using rule 13 (expression -> expression eq expression .) ]
+  ! Idivide         [ reduce using rule 13 (expression -> expression eq expression .) ]
+  ! ^               [ reduce using rule 13 (expression -> expression eq expression .) ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 35
+
+    (14) expression -> expression ne expression .
+    (3) expression -> expression . + expression
+    (4) expression -> expression . - expression
+    (5) expression -> expression . * expression
+    (6) expression -> expression . / expression
+    (7) expression -> expression . Idivide expression
+    (8) expression -> expression . ^ expression
+    (9) expression -> expression . > expression
+    (10) expression -> expression . ge expression
+    (11) expression -> expression . < expression
+    (12) expression -> expression . le expression
+    (13) expression -> expression . eq expression
+    (14) expression -> expression . ne expression
+
+    >               reduce using rule 14 (expression -> expression ne expression .)
+    ge              reduce using rule 14 (expression -> expression ne expression .)
+    <               reduce using rule 14 (expression -> expression ne expression .)
+    le              reduce using rule 14 (expression -> expression ne expression .)
+    eq              reduce using rule 14 (expression -> expression ne expression .)
+    ne              reduce using rule 14 (expression -> expression ne expression .)
+    $end            reduce using rule 14 (expression -> expression ne expression .)
+    )               reduce using rule 14 (expression -> expression ne expression .)
+    +               shift and go to state 9
+    -               shift and go to state 10
+    *               shift and go to state 11
+    /               shift and go to state 12
+    Idivide         shift and go to state 13
+    ^               shift and go to state 14
+
+  ! +               [ reduce using rule 14 (expression -> expression ne expression .) ]
+  ! -               [ reduce using rule 14 (expression -> expression ne expression .) ]
+  ! *               [ reduce using rule 14 (expression -> expression ne expression .) ]
+  ! /               [ reduce using rule 14 (expression -> expression ne expression .) ]
+  ! Idivide         [ reduce using rule 14 (expression -> expression ne expression .) ]
+  ! ^               [ reduce using rule 14 (expression -> expression ne expression .) ]
+  ! >               [ shift and go to state 15 ]
+  ! ge              [ shift and go to state 16 ]
+  ! <               [ shift and go to state 17 ]
+  ! le              [ shift and go to state 18 ]
+  ! eq              [ shift and go to state 19 ]
+  ! ne              [ shift and go to state 20 ]
+
+
+state 36
+
+    (15) expression -> ( expression ) .
+
+    +               reduce using rule 15 (expression -> ( expression ) .)
+    -               reduce using rule 15 (expression -> ( expression ) .)
+    *               reduce using rule 15 (expression -> ( expression ) .)
+    /               reduce using rule 15 (expression -> ( expression ) .)
+    Idivide         reduce using rule 15 (expression -> ( expression ) .)
+    ^               reduce using rule 15 (expression -> ( expression ) .)
+    >               reduce using rule 15 (expression -> ( expression ) .)
+    ge              reduce using rule 15 (expression -> ( expression ) .)
+    <               reduce using rule 15 (expression -> ( expression ) .)
+    le              reduce using rule 15 (expression -> ( expression ) .)
+    eq              reduce using rule 15 (expression -> ( expression ) .)
+    ne              reduce using rule 15 (expression -> ( expression ) .)
+    $end            reduce using rule 15 (expression -> ( expression ) .)
+    )               reduce using rule 15 (expression -> ( expression ) .)
+
