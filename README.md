@@ -33,7 +33,7 @@ The target of this project is to make an expression evaluator. The project is di
   - PI constant value is 3.1416
   - Precedence of operation is the same as in conventional programming languages.
 
-## Lexical analyzer (Phase 1)
+## 1) Lexical analyzer
 Recognize all integers, real numbers, operators, variables, constants and error tokens.  
 Each line in the output file should be in the following format:
 
@@ -56,7 +56,7 @@ For example,
     x/VAR =/= y/VAR
     x/VAR !=/!= 5/NUM
 
-## Syntactic analyzer
+## 2) Syntactic analyzer
 
  - Correct grammar/result.
  - Working parser.
@@ -85,7 +85,7 @@ For example,
     (x=y) or Undefined variable y at line 5, pos 3
     (x!=5)
 
-## Code generator
+## 3) Code generator
 Convert each line of expression or statement into 3-address codes
 
  - Correct translation for each operator  
