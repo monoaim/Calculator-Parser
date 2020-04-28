@@ -97,10 +97,10 @@ The generated codes for each input line is separated by a blank line. Only print
 
 ### List of available operators
 
-    LD R #Im // Load a constant Im to R
-    LD R1 R2 // Copy data in R2 to R1
-    LD R Add // Load data in address Add to R
-    ST Add R // Store data in R into address Add
+    LD R #Im         // Load a constant Im to R
+    LD R1 R2         // Copy data in R2 to R1
+    LD R Add         // Load data in address Add to R
+    ST Add R         // Store data in R into address Add
 
 Integer operations. All data are integers.
 
@@ -120,17 +120,17 @@ Floating-point operations. All data are floats.
 
 Comparisons. R2 and R3 store floats. R1 stores an integer.
 
-    LT.f R1 R2 R3   // R1 = (R2 < R3)? 1 : 0
-    LE.f R1 R2 R3   // R1 = (R2 <= R3)? 1 : 0
-    GT.f R1 R2 R3   // R1 = (R2 > R3)? 1 : 0
-    GE.f R1 R2 R3   // R1 = (R2 >= R3)? 1 : 0
-    EQ.f R1 R2 R3   // R1 = (R2 == R3)? 1 : 0
-    NE.f R1 R2 R3   // R1 = (R2 != R3)? 1 : 0
+    LT.f R1 R2 R3    // R1 = (R2 < R3)? 1 : 0
+    LE.f R1 R2 R3    // R1 = (R2 <= R3)? 1 : 0
+    GT.f R1 R2 R3    // R1 = (R2 > R3)? 1 : 0
+    GE.f R1 R2 R3    // R1 = (R2 >= R3)? 1 : 0
+    EQ.f R1 R2 R3    // R1 = (R2 == R3)? 1 : 0
+    NE.f R1 R2 R3    // R1 = (R2 != R3)? 1 : 0
 
 Conversion
 
-    FL.i R1 R2      // R1 = (float)R2
-    INT.f R1 R2     // R1 = (int)R2
+    FL.i R1 R2       // R1 = (float)R2
+    INT.f R1 R2      // R1 = (int)R2
 
 ### Example input and output
 Input
