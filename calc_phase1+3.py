@@ -377,7 +377,8 @@ class CalculatorProject:
                 self.parser.parse(data)
                 self.result.append(self.three)
                 self.three.append('\n')
-            except SyntaxError:
+            except (SyntaxError, KeyError, TypeError, ValueError):
+                # Handle parsing errors, missing variables, type mismatches
                 self.result.append(["ERROR\n\n"])
             self.names.clear()
             self.count = 0

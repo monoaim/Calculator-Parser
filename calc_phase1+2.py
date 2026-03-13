@@ -199,7 +199,7 @@ class CalculatorProject:
                       | expression eq expression
                       | expression ne expression'''
         # Output bracketed expression with the operator
-        p[0] = '({}{}{})'  .format(p[1], p[2], p[3])
+        p[0] = '({}{}{})'.format(p[1], p[2], p[3])
 
     def p_expression_uminus(self, p):
         '''expression : '-' expression %prec UMINUS'''
