@@ -1,23 +1,39 @@
 # ------------------------------------------------------------
 # calc_phase1+2.py
 #
-# A simple calculator with variables.
-#
+# A simple calculator with variables and syntactic analyzer.
+# Outputs parse trees showing operator precedence through bracketing.
 #
 # 58090046 Araya Siriadun
 # ------------------------------------------------------------
+"""
+Calculator Parser Phase 2: Syntactic Analyzer
 
+This module implements a lexical analyzer and parser for arithmetic
+expressions, outputting parse trees in fully-bracketed notation.
+
+Supported operations:
+    - Arithmetic: +, -, *, /, //, ^
+    - Comparison: >, >=, <, <=, ==, !=
+    - Assignment: =
+    - Parentheses for grouping
+    - Variables and PI constant
+"""
 import ply.lex as lex
 import ply.yacc as yacc
-import codecs
 
 
 class CalculatorProject:
-    # List of token names.
+    """
+    Calculator project implementing lexical analysis and parsing
+    for arithmetic expressions with parse tree output.
+    """
+    # List of token names
     tokens = ('NUM', 'Idivide', 'ge', 'le', 'eq', 'ne', 'VAR', 'PI', 'ERR')
 
     literals = ['+', '-', '*', '/', '>', '^', '<', '=', '(', ')']
 
+    # Mapping from token types to operator symbols for output formatting
     operator = {
         'Idivide': '//',
         'ge': '>=',
@@ -29,47 +45,56 @@ class CalculatorProject:
     t_ignore = ' \t'
 
     def __init__(self):
+        """Initialize the calculator with lexer and parser."""
         self.file = None
-        self.errorMsg = str()
+        self.errorMsg = ''
 
         # Build the lexer and parser
         self.lexer = lex.lex(module=self)
         self.parser = yacc.yacc(module=self)
 
     def t_NUM(self, t):
-        r'(?:(?<=(?<=\+)|(?<=\-)|(?<=\*)|(?<=/)|(?<=//)|(?<=\^)|(?<=>)|(?<=>=)|(?<=<)|(?<=<=)|(?<===)|(?<=!=)|(?<=\()|(?<==)|(?<=\s)|(?<=\A)))-?(?=[1-9]|0(?!\d))\d+(\.\d+)?([eE][+-]?\d+)?(?=\+|\-|\*|/|//|\^|>|>=|<|<=|==|!=|\)|=|\s|\Z)'
-        if '.' in t.value:
+        r'-?(?:[1-9]\d*|0)(?:\.\d+)?(?:[eE][+-]?\d+)?'
+        """Match integer or floating-point numbers, including scientific notation."""
+        if '.' in t.value or 'e' in t.value.lower():
             t.value = float(t.value)
         else:
             t.value = int(t.value)
         return t
 
     def t_PI(self, t):
-        r'(?:(?<=(?<=\+)|(?<=\-)|(?<=\*)|(?<=/)|(?<=//)|(?<=\^)|(?<=>)|(?<=>=)|(?<=<)|(?<=<=)|(?<===)|(?<=!=)|(?<=\()|(?<==)|(?<=\s)|(?<=\A)))PI(?=\+|\-|\*|/|//|\^|>|>=|<|<=|==|!=|\)|=|\s|\Z)'
+        r'PI\b'
+        """Match the PI constant."""
         return t
 
     def t_VAR(self, t):
-        r'(?:(?<=(?<=\+)|(?<=\-)|(?<=\*)|(?<=/)|(?<=//)|(?<=\^)|(?<=>)|(?<=>=)|(?<=<)|(?<=<=)|(?<===)|(?<=!=)|(?<=\()|(?<==)|(?<=\s)|(?<=\A)))[a-zA-Z_][a-zA-Z0-9_]*(?=\+|\-|\*|/|//|\^|>|>=|<|<=|==|!=|\)|=|\s|\Z)'
+        r'[a-zA-Z_][a-zA-Z0-9_]*'
+        """Match variable names (identifiers)."""
         return t
 
     def t_Idivide(self, t):
         r'//'
+        """Match integer division operator."""
         return t
 
     def t_ge(self, t):
         r'>='
+        """Match greater-than-or-equal operator."""
         return t
 
     def t_le(self, t):
         r'<='
+        """Match less-than-or-equal operator."""
         return t
 
     def t_eq(self, t):
         r'=='
+        """Match equality operator."""
         return t
 
     def t_ne(self, t):
         r'!='
+        """Match not-equal operator."""
         return t
 
     def t_plus(self, t):
@@ -123,15 +148,17 @@ class CalculatorProject:
         return t
 
     def t_ERR(self, t):
-        #r'(?<=\s)\S+(?=\s)|(?<=\A)\S+(?=\s)|(?<=\s)\S+(?=\Z)'
         r'\S'
+        """Match any non-whitespace character as an error token."""
         return t
 
     def t_newline(self, t):
         r'\n+'
+        """Track line numbers."""
         t.lexer.lineno += t.value.count("\n")
 
     def t_error(self, t):
+        """Handle illegal characters by skipping them."""
         print("Illegal character '{}'".format(t.value[0]))
         t.lexer.skip(1)
 
@@ -171,30 +198,8 @@ class CalculatorProject:
                       | expression le expression
                       | expression eq expression
                       | expression ne expression'''
-        if p[2] == '+':
-            p[0] = '({}+{})'.format(p[1], p[3])
-        elif p[2] == '-':
-            p[0] = '({}-{})'.format(p[1], p[3])
-        elif p[2] == '*':
-            p[0] = '({}*{})'.format(p[1], p[3])
-        elif p[2] == '/':
-            p[0] = '({}/{})'.format(p[1], p[3])
-        elif p[2] == '//':
-            p[0] = '({}//{})'.format(p[1], p[3])
-        elif p[2] == '^':
-            p[0] = '({}^{})'.format(p[1], p[3])
-        elif p[2] == '>':
-            p[0] = '({}>{})'.format(p[1], p[3])
-        elif p[2] == '>=':
-            p[0] = '({}>={})'.format(p[1], p[3])
-        elif p[2] == '<':
-            p[0] = '({}<{})'.format(p[1], p[3])
-        elif p[2] == '<=':
-            p[0] = '({}<={})'.format(p[1], p[3])
-        elif p[2] == '==':
-            p[0] = '({}=={})'.format(p[1], p[3])
-        elif p[2] == '!=':
-            p[0] = '({}!={})'.format(p[1], p[3])
+        # Output bracketed expression with the operator
+        p[0] = '({}{}{})'  .format(p[1], p[2], p[3])
 
     def p_expression_uminus(self, p):
         '''expression : '-' expression %prec UMINUS'''
@@ -224,54 +229,77 @@ class CalculatorProject:
             p.lineno(1), p.lexpos(1))
 
     def p_error(self, p):
+        """Handle parsing errors."""
         self.errorMsg = "Error: can't assign to literal in line {}".format(
             p.lineno)
 
     def read(self, filename):
-        # Read input from the input file line-by-line into a list
-        self.file = [line.rstrip('\n') + '\n' for line in open(filename)]
+        """
+        Read input from a file line-by-line.
+
+        Args:
+            filename: Path to the input file
+        """
+        with open(filename, 'r', encoding='utf-8') as f:
+            self.file = [line.rstrip('\n') + '\n' for line in f]
 
     def tokenize(self):
-        out = str()
+        """
+        Tokenize all lines in the loaded file.
+
+        Returns:
+            str: Formatted token output, one line per input line
+        """
+        output_lines = []
         for data in self.file:
             self.lexer.input(data)
+            tokens = []
             while True:
                 tok = self.lexer.token()
                 if not tok:
                     break
                 if tok.type in self.operator:
-                    out += '{}/{} '.format(tok.value, self.operator[tok.type])
+                    tokens.append('{}/{}'.format(tok.value, self.operator[tok.type]))
                 else:
-                    out += '{}/{} '.format(tok.value, tok.type)
-            out = out[:-1] + '\n'
-        return out
+                    tokens.append('{}/{}'.format(tok.value, tok.type))
+            output_lines.append(' '.join(tokens))
+        return '\n'.join(output_lines) + '\n'
 
     def parse(self):
-        out = str()
-        for data in self.file:
-            parse = self.parser.parse(data)
-            if self.errorMsg:
-                out += self.errorMsg
-                self.errorMsg = str()
-            else:
-                out += parse
-            out += '\n'
-        return out
+        """
+        Parse all lines in the loaded file.
 
-    def write(self, fileType):
-        # Output file in 'type' file
-        fileName = "out"
-        file = codecs.open("{}.{}".format(fileName, fileType), 'w', 'utf-8')
-        if fileType == 'tok':
-            file.write(self.tokenize())
-        elif fileType == 'txt':
-            file.write(self.parse())
-        file.close()
+        Returns:
+            str: Parse tree output or error messages
+        """
+        output_lines = []
+        for data in self.file:
+            result = self.parser.parse(data)
+            if self.errorMsg:
+                output_lines.append(self.errorMsg)
+                self.errorMsg = ''
+            else:
+                output_lines.append(str(result))
+        return '\n'.join(output_lines) + '\n'
+
+    def write(self, file_type):
+        """
+        Write output to a file.
+
+        Args:
+            file_type: Output format ('tok' for tokens, 'txt' for parse tree)
+        """
+        filename = "out.{}".format(file_type)
+        with open(filename, 'w', encoding='utf-8') as f:
+            if file_type == 'tok':
+                f.write(self.tokenize())
+            elif file_type == 'txt':
+                f.write(self.parse())
 
 
 if __name__ == "__main__":
-    testCases = "TestCases-2016-04-30-10.txt"  # the input text file
-    m = CalculatorProject()
-    m.read(testCases)
-    m.write("tok")
-    m.write("txt")
+    test_cases = "TestCases-2016-04-30-10.txt"  # the input text file
+    calculator = CalculatorProject()
+    calculator.read(test_cases)
+    calculator.write("tok")
+    calculator.write("txt")
